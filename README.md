@@ -1,6 +1,6 @@
 # sentinel1-orbits-py
 
-A python utility for downloading Sentinel-1 Orbit files from the Registry of Open Data on AWS.
+A Python utility for downloading Sentinel-1 Orbit files from the Registry of Open Data on AWS.
 
 ```
 >>> import s1_orbits
@@ -34,17 +34,18 @@ python -m pip install s1_orbits
 
 ## Development
 
-1. Clone the repository
+1. Install [git](https://git-scm.com/) and [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html).
+1. Clone the repository.
    ```
    git clone git@github.com:ASFHyP3/sentinel1-orbits-py.git
    cd sentinel1-orbits-py
    ```
-1. Create and activate the conda environment
+1. Create and activate the conda environment.
    ```
    conda env create -f environment.yml
    conda activate s1-orbits
    ```
-1. Run the tests
+1. Run the tests.
    ```
    pytest tests
    ```
