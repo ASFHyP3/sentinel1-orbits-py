@@ -2,7 +2,7 @@
 
 A Python utility for downloading Sentinel-1 Orbit files from the Registry of Open Data on AWS.
 
-```
+```python
 >>> import s1_orbits
 
 >>> orbit_file = s1_orbits.fetch_for_scene('S1A_IW_SLC__1SDV_20230727T075102_20230727T075131_049606_05F70A_AE0A')
@@ -30,7 +30,12 @@ python -m pip install s1_orbits
 
 ## Usage
 
-
+```python
+>>> import s1_orbits
+>>> orbit_file = s1_orbits.fetch_for_scene(scene='S1A_IW_SLC__1SDV_20230727T075102_20230727T075131_049606_05F70A_AE0A', dir='/data')
+>>> orbit_file
+PosixPath('/data/S1A_OPER_AUX_POEORB_OPOD_20230816T080815_V20230726T225942_20230728T005942.EOF')
+```
 
 ## Development
 
