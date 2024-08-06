@@ -33,6 +33,7 @@ develop = [
     "pytest",
     "pytest-cov",
     "responses",
+    "ruff",
 ]
 
 [project.urls]
