@@ -12,4 +12,3 @@ and uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 * Tests for the `fetch_for_scene` function.
 * Support for packaging into a Python Library.
 
-## [Unreleased]
