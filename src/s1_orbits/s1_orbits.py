@@ -14,7 +14,7 @@ def fetch_for_scene(
     scene: str,
     dir: Union[Path, str] = ".",
 ) -> Path:
-    """For the given scene, this downloads the AUX_POEORB file, if available, otherwise it downloads the AUX_RESORB.
+    """For the given scene, downloads the AUX_POEORB file if available, otherwise downloads the AUX_RESORB file.
 
     Args:
         scene: The scene name for which to download the orbit file.
