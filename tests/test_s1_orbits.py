@@ -23,14 +23,16 @@ def test_fetch_for_scene(tmp_path):
         body=file_contents,
         content_type="text/plain",
     )
-    filepath = s1_orbits.fetch_for_scene("foo", tmp_path)
+    filepath = s1_orbits.fetch_for_scene(granule, tmp_path)
     assert filepath == Path(tmp_path) / filename
     assert filepath.read_text() == file_contents
 
     responses.add(responses.GET, request_url, status=400)
-    with pytest.raises(s1_orbits.InvalidSceneError):
-        s1_orbits.fetch_for_scene("foo", tmp_path)
+    with pytest.raises(s1_orbits.InvalidSceneError) as invalid_error:
+        s1_orbits.fetch_for_scene(granule, tmp_path)
+        assert invalid_error.scene == granule
 
     responses.add(responses.GET, request_url, status=404)
-    with pytest.raises(s1_orbits.OrbitNotFoundError):
-        s1_orbits.fetch_for_scene("foo", tmp_path)
+    with pytest.raises(s1_orbits.OrbitNotFoundError) as not_found_error:
+        s1_orbits.fetch_for_scene(granule, tmp_path)
+        assert not_found_error.scene == granule
