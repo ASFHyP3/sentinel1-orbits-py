@@ -48,11 +48,10 @@ PosixPath('/data/S1A_OPER_AUX_POEORB_OPOD_20230816T080815_V20230726T225942_20230
    git clone git@github.com:ASFHyP3/sentinel1-orbits-py.git
    cd sentinel1-orbits-py
    ```
-1. Create and activate the conda environment and install the `s1_orbits` package.
+1. Create and activate the conda environment.
    ```
    conda env create -f environment.yml
    conda activate s1-orbits
-   pip install -e .
    ```
 1. Run the tests.
    ```
