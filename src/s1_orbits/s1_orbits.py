@@ -40,4 +40,4 @@ def fetch_for_scene(
                     f.write(chunk)
     session.close()
 
-    return str(download_path)
+    return download_path
