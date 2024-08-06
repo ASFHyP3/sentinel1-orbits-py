@@ -9,8 +9,8 @@ API_URL = f'https://s1-orbits.asf.alaska.edu/scene'
 
 
 def fetch_for_scene(
-    granule: str,
-    directory: Union[Path, str] = '.',
+    scene: str,
+    dir: Union[Path, str] = '.',
 ) -> str:
     """Download a file
 
@@ -22,7 +22,7 @@ def fetch_for_scene(
     Returns:
         download_path: The path to the downloaded file
     """
-    request_url = f'{API_URL}/{granule}'
+    request_url = f'{API_URL}/{scene}'
 
     logging.info(f'Downloading {request_url}')
 
@@ -33,7 +33,7 @@ def fetch_for_scene(
             raise ValueError(f'Invalid scene name.')
         res.raise_for_status()
         filename = res.url.split('/')[-1]
-        download_path = Path(directory) / filename
+        download_path = Path(dir) / filename
         with open(download_path, 'wb') as f:
             for chunk in res.iter_content():
                 if chunk:
