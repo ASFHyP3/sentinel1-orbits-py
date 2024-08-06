@@ -12,15 +12,14 @@ def fetch_for_scene(
     scene: str,
     dir: Union[Path, str] = ".",
 ) -> str:
-    """Download a file
+    """For the given scene, this downloads the AUX_POEORB file, if available, otherwise it downloads the AUX_RESORB.
 
     Args:
-        url: URL of the file to download
-        directory: Directory location to place files into
-        chunk_size: Size to chunk the download into
+        scene: The scene name for which to download the orbit file.
+        dir: The directory that the orbit file should download into.        
 
     Returns:
-        download_path: The path to the downloaded file
+        download_path: The path to the downloaded file.
     """
     request_url = f"{API_URL}/{scene}"
 
