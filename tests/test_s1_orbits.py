@@ -6,34 +6,32 @@ from pathlib import Path
 
 import s1_orbits
 
+
 @responses.activate
 def test_fetch_for_scene():
-    granule = 'foo'
-    filename = 'filename.txt'
-    request_url = f'{s1_orbits.API_URL}/{granule}'
-    response_url = f'https://bar.com/{filename}'
+    granule = "foo"
+    filename = "filename.txt"
+    request_url = f"{s1_orbits.API_URL}/{granule}"
+    response_url = f"https://bar.com/{filename}"
     directory = tempfile.gettempdir()
 
     responses.add(
-        responses.GET,
-        request_url,
-        status=302,
-        headers={'Location': response_url}
+        responses.GET, request_url, status=302, headers={"Location": response_url}
     )
     responses.add(
         responses.GET,
         response_url,
         status=200,
         body="This is some text.",
-        content_type='text/plain'
+        content_type="text/plain",
     )
-    filepath = s1_orbits.fetch_for_scene('foo', directory)
+    filepath = s1_orbits.fetch_for_scene("foo", directory)
     assert filepath == Path(directory) / filename
 
     responses.add(responses.GET, request_url, status=400)
     with pytest.raises(ValueError):
-        s1_orbits.fetch_for_scene('foo', directory)
+        s1_orbits.fetch_for_scene("foo", directory)
 
     responses.add(responses.GET, request_url, status=404)
     with pytest.raises(requests.HTTPError):
-        s1_orbits.fetch_for_scene('foo', directory)
+        s1_orbits.fetch_for_scene("foo", directory)
