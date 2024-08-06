@@ -27,9 +27,7 @@ def fetch_for_scene(
 
     logging.info(f"Downloading {request_url}")
 
-    session = requests.Session()
-
-    res = session.get(request_url)
+    res = requests.get(request_url)
     if res.status_code == 400:
         raise InvalidSceneError(scene)
     if res.status_code == 404:
@@ -39,7 +37,5 @@ def fetch_for_scene(
     filename = res.url.split("/")[-1]
     download_path = Path(dir) / filename
     download_path.write_text(res.text)
-
-    session.close()
 
     return download_path
