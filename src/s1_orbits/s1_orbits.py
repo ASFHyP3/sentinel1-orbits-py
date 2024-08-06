@@ -4,6 +4,8 @@ from typing import Union
 
 import requests
 
+from .exceptions import InvalidSceneError, OrbitNotFoundError
+
 
 API_URL = "https://s1-orbits.asf.alaska.edu/scene"
 
@@ -16,7 +18,7 @@ def fetch_for_scene(
 
     Args:
         scene: The scene name for which to download the orbit file.
-        dir: The directory that the orbit file should download into.        
+        dir: The directory that the orbit file should download into.
 
     Returns:
         download_path: The path to the downloaded file.
@@ -29,7 +31,9 @@ def fetch_for_scene(
 
     with session.get(request_url, stream=True) as res:
         if res.status_code == 400:
-            raise ValueError("Invalid scene name.")
+            raise InvalidSceneError(scene)
+        if res.status_code == 404:
+            raise OrbitNotFoundError(scene)
         res.raise_for_status()
         filename = res.url.split("/")[-1]
         download_path = Path(dir) / filename

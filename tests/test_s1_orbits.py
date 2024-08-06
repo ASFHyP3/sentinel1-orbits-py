@@ -1,5 +1,4 @@
 import tempfile
-import requests
 import responses
 import pytest
 from pathlib import Path
@@ -29,9 +28,9 @@ def test_fetch_for_scene():
     assert filepath == Path(directory) / filename
 
     responses.add(responses.GET, request_url, status=400)
-    with pytest.raises(ValueError):
+    with pytest.raises(s1_orbits.InvalidSceneError):
         s1_orbits.fetch_for_scene("foo", directory)
 
     responses.add(responses.GET, request_url, status=404)
-    with pytest.raises(requests.HTTPError):
+    with pytest.raises(s1_orbits.OrbitNotFoundError):
         s1_orbits.fetch_for_scene("foo", directory)
