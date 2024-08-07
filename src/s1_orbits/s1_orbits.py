@@ -1,4 +1,3 @@
-import logging
 from pathlib import Path
 from typing import Union
 
@@ -24,8 +23,6 @@ def fetch_for_scene(
         download_path: The path to the downloaded file.
     """
     request_url = f"{API_URL}/{scene}"
-
-    logging.info(f"Downloading {request_url}")
 
     res = requests.get(request_url)
     if res.status_code == 400:
