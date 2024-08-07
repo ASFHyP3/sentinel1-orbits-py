@@ -1,0 +1,19 @@
+name: Test with pytest
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  call-pytest-workflow:
+    uses: ASFHyP3/actions/.github/workflows/reusable-pytest.yml@v0.11.2
+    with:
+      local_package_name: s1_orbits
+      python_versions: >-
+        ["3.9", "3.10", "3.11", "3.12"]
