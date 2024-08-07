@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "s1_orbits"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 authors = [
     {name="ASF APD/Tools Team", email="uaf-asf-apd@alaska.edu"},
 ]
@@ -29,9 +29,11 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 develop = [
+    "build",
     "pytest",
     "pytest-cov",
-    "responses"
+    "responses",
+    "ruff",
 ]
 
 [project.urls]

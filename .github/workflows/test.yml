@@ -16,4 +16,4 @@ jobs:
     with:
       local_package_name: s1_orbits
       python_versions: >-
-        ["3.10", "3.11", "3.12"]
+        ["3.9", "3.10", "3.11", "3.12"]

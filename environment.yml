@@ -3,14 +3,7 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - python>=3.10
+  - python>=3.9
   - pip
-  # For packaging, and testing
-  - build
-  - setuptools>=61
-  - setuptools_scm>=6.2
-  - pytest
-  - pytest-cov
-  - responses
-  # For running
-  - requests
+  - pip:
+      - --editable .[develop]
