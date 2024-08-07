@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "s1_orbits"
+requires-python = ">=3.9"
+authors = [
+    {name="ASF APD/Tools Team", email="uaf-asf-apd@alaska.edu"},
+]
+description = "A Python utility for downloading Sentinel-1 Orbit files from the Registry of Open Data on AWS"
+readme = "README.md"
+license = {text = "BSD-3-Clause"}
+classifiers=[
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "requests",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+develop = [
+    "build",
+    "pytest",
+    "pytest-cov",
+    "responses",
+    "ruff",
+]
+
+[project.urls]
+Homepage = "https://github.com/ASFHyP3/sentinel1-orbits-py"
+"Bug Tracker" = "https://github.com/ASFHyP3/sentinel1-orbits-py/issues"
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
