@@ -19,6 +19,10 @@ def fetch_for_scene(
         scene: The scene name for which to download the orbit file.
         dir: The directory that the orbit file should download into.
 
+    Raises:
+        InvalidSceneError: Thrown if the scene name is not a proper Sentinel-1 scene name.
+        OrbitNotFoundError: Thrown if an orbit cannot be found for the provided scene.
+
     Returns:
         download_path: The path to the downloaded file.
     """
