@@ -33,16 +33,6 @@ python -m pip install s1_orbits
 **s1-orbits** provides one function - `fetch_for_scene` - to download the "best available" orbit file for a given scene. This means it will download the *AUX_POEORB* file if it exists; otherwise, it will download the *AUX_RESORB* file. For a more full-featured API, see [sentinelOf](https://github.com/scottstanie/sentineleof) or [CDSE's APIs](https://documentation.dataspace.copernicus.eu/APIs.html).
 
 ```python
->>> import s1_orbits
->>> orbit_file = s1_orbits.fetch_for_scene(
-...     scene='S1A_IW_SLC__1SDV_20230727T075102_20230727T075131_049606_05F70A_AE0A',
-...     dir='/data',
-... )
->>> orbit_file
-PosixPath('/data/S1A_OPER_AUX_POEORB_OPOD_20230816T080815_V20230726T225942_20230728T005942.EOF')
-```
-
-```python
 fetch_for_scene(scene: str, dir: Union[pathlib.Path, str] = '.') -> pathlib.Path
     """
     For the given scene, downloads the AUX_POEORB file if available, otherwise downloads the AUX_RESORB file.
