@@ -27,11 +27,15 @@ def test_fetch_for_scene(tmp_path):
     assert filepath.read_text() == file_contents
 
     responses.add(responses.GET, request_url, status=400)
-    with pytest.raises(s1_orbits.InvalidSceneError) as invalid_error:
+    with pytest.raises(
+        s1_orbits.InvalidSceneError, match=r'^foo is not a valid Sentinel-1 scene name\.$'
+    ) as invalid_error:
         s1_orbits.fetch_for_scene(granule, tmp_path)
-        assert invalid_error.scene == granule
+    assert invalid_error.value.scene == granule
 
     responses.add(responses.GET, request_url, status=404)
-    with pytest.raises(s1_orbits.OrbitNotFoundError) as not_found_error:
+    with pytest.raises(
+        s1_orbits.OrbitNotFoundError, match=r'^No orbit file could be found for the provided Sentinel-1 scene: foo$'
+    ) as not_found_error:
         s1_orbits.fetch_for_scene(granule, tmp_path)
-        assert not_found_error.scene == granule
+    assert not_found_error.value.scene == granule
