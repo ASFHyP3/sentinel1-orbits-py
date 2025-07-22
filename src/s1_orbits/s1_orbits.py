@@ -1,5 +1,6 @@
+"""A Python utility for downloading Sentinel-1 Orbit files from the Registry of Open Data on AWS."""
+
 from pathlib import Path
-from typing import Union
 
 import requests
 
@@ -11,7 +12,7 @@ API_URL = 'https://s1-orbits.asf.alaska.edu/scene'
 
 def fetch_for_scene(
     scene: str,
-    dir: Union[Path, str] = '.',
+    dir: Path | str = '.',
 ) -> Path:
     """For the given scene, downloads the AUX_POEORB file if available, otherwise downloads the AUX_RESORB file.
 

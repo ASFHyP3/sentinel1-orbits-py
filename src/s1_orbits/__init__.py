@@ -1,3 +1,5 @@
+"""A Python utility for downloading Sentinel-1 Orbit files from the Registry of Open Data on AWS."""
+
 from importlib.metadata import version
 
 from .exceptions import InvalidSceneError, OrbitNotFoundError
